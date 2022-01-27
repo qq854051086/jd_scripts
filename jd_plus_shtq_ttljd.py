@@ -38,12 +38,12 @@ class getJDCookie(object):
     def getCookie(self):
         global cookies
         self.getckfile()
-        try:
-            flag = os.environ["JD_PLUS_VIP_SIGN"]
-            if int(flag) != 1:
-                print("未添加开启plus签到变量，任务不执行")
-                exit(0)
+        flag = os.environ["JD_PLUS_VIP_SIGN"] if "JD_PLUS_VIP_SIGN" in os.environ else False
+        if int(flag) != 1:
+            print("未添加开启plus签到变量，任务不执行")
+            exit(0)
 
+        try:
             cookies = os.environ["JD_COOKIE"]   # 青龙面板
             # cookies = JD_COOKIE   # 测试开发
             print("已获取并使用Env环境 Cookie")
