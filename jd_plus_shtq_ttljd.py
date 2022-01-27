@@ -127,8 +127,6 @@ def start():
     print("\n")
 
     getCk = getJDCookie()
-    getCk.getCookie()
-
     cookiesList, userNameList, pinNameList = getCk.getCookie()
 
     for ck in cookiesList:
@@ -150,9 +148,9 @@ def start():
         try:
             resp = requests.post(url=url,data=data, headers=header, verify=False, timeout=30).json()
             print("\n原始数据:", resp)
-            if resp["code"] == 0:
+            if int(resp["code"]) == 0:
                 print(f"\n签到：{resp['msg']}")
-            if resp["subCode"] == 0:
+            if int(resp["subCode"]) == 0:
                 print("\n获得京豆：", resp['rewardsInfo']["successRewards"]["3"][0]["rewardName"])
             time.sleep(1)
         except Exception as e:
