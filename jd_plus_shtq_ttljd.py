@@ -69,12 +69,12 @@ class getJDCookie(object):
             r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
             result = r.findall(resp)
             userInfo = json.loads(result[0])
+            nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
             if userInfo['data']['userInfo']['isPlusVip'] == "1":
                 print("当前用户为Plus用户，继续执行")
             else:
-                print("当前用户不是plus用户")
-                return "ck",False
-            nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
+                print(f"当前用户{nickname}不是plus用户")
+                return "ck", False
             return ck, nickname
         except Exception:
             context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
