@@ -71,9 +71,9 @@ class getJDCookie(object):
             userInfo = json.loads(result[0])
             nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
             if userInfo['data']['userInfo']['isPlusVip'] == "1":
-                print("当前用户为Plus用户，继续执行")
+                print(f"当前用户 {nickname} 为Plus用户，稍后签到")
             else:
-                print(f"当前用户{nickname}不是plus用户")
+                print(f"当前用户 {nickname} 不是plus用户")
                 return "ck", False
             return ck, nickname
         except Exception:
