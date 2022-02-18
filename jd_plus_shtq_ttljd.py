@@ -72,8 +72,8 @@ class getJDCookie(object):
             if userInfo['data']['userInfo']['isPlusVip'] == "1":
                 print("当前用户为Plus用户，继续执行")
             else:
-                print("当前用户不是plus用户，退出任务")
-                exit(0)
+                print("当前用户不是plus用户")
+                return "ck",False
             nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
             return ck, nickname
         except Exception:
